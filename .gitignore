@@ -1,0 +1,2 @@
+#ignore temporary files create by python
+__pycache__/
