@@ -1,3 +1,7 @@
+"""A tic-tac-toe game built with Python and Tkinter."""
+"""Sergio Parigi """
+"""Matricola 138771"""
+
 import tkinter as tk
 
 from tkinter import font

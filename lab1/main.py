@@ -1,4 +1,7 @@
 """A tic-tac-toe game built with Python and Tkinter."""
+"""Sergio Parigi """
+"""Matricola 138771"""
+
 from board import Board
 from game import Game
 

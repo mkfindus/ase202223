@@ -1,3 +1,7 @@
+"""A tic-tac-toe game built with Python and Tkinter."""
+"""Sergio Parigi """
+"""Matricola 138771"""
+
 from itertools import cycle
 from typing import NamedTuple
 
@@ -55,6 +59,8 @@ class Game:
         # and that there is no winner yet. Note that non-played cells
         # contain an empty string (i.e. ""). 
         # Use variables no_winner and move_not_played.
+        no_winner = False
+        move_not_played = False
         
         return no_winner and move_not_played
 
