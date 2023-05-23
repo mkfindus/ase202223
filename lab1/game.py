@@ -87,6 +87,7 @@ class Game:
         """Process the current move and check if it's a win."""
         row, col = move.row, move.col
         self._current_moves[row][col] = move
+
         for combo in self._winning_combos:
             results = set(self._current_moves[n][m].label for n, m in combo)
             is_win = (len(results) == 1) and ("" not in results)
@@ -102,8 +103,11 @@ class Game:
 
     def is_tied(self):
         """Return True if the game is tied, and False otherwise."""
-        # TODO: check whether a tie was reached.
-        # There is no winner and all moves have been tried.
+        no_winner = not self._has_winner
+        played_moves = (
+            move.label for row in self._current_moves for move in row
+        )
+        return no_winner and all(played_moves)
 
     def toggle_player(self):
         """Return a toggled player."""
