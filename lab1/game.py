@@ -1,6 +1,6 @@
-"""A tic-tac-toe game built with Python and Tkinter."""
-"""Sergio Parigi """
-"""Matricola 138771"""
+# A tic-tac-toe game built with Python and Tkinter.
+# Sergio Parigi 
+# Matricola 138771
 
 from itertools import cycle
 from typing import NamedTuple
@@ -54,13 +54,32 @@ class Game:
 
     def is_valid_move(self, move):
         """Return True if move is valid, and False otherwise."""
-        row, col = move.row, move.col
+        row = move.row
+        col = move.col
         # TODO: check that the current move has not been played already 
         # and that there is no winner yet. Note that non-played cells
         # contain an empty string (i.e. ""). 
         # Use variables no_winner and move_not_played.
-        no_winner = False
-        move_not_played = False
+        if self._current_moves[row][col].label == "":
+            move_not_played=True
+        else:   
+            move_not_played=False
+
+        tuples_to_check = [(pmove.row, pmove.col) for sublist in self._current_moves for pmove in sublist if pmove.label == "X"]
+
+        #tuples_to_check = [(pmove.row, pmove.col) for pmove in self._current_moves if pmove.label == "X"]
+        for combo in self._get_winning_combos():
+            if all(tuple(pmove) in tuples_to_check for pmove in self._winning_combos):
+                no_winner=False
+                break
+            else:
+                no_winner=True
+                break
+        #no_winner = not self._current_moves in self.winning_combos
+
+        # no_winner = False
+        # move_not_played = False
+    
         
         return no_winner and move_not_played
 
